@@ -52,7 +52,7 @@ void Team::addPlayer(const Player& player)
 		throw invalid_argument("Team is full");
 	}
 
-	// Adiciona o jogador ao vetor
+	// Adiciona o jogador na lista
 	players.push_back(player);
 }
 
@@ -65,17 +65,40 @@ void Team::removePlayer(const string& name)
 		throw invalid_argument("Team is empty");
 	}
 
-	// Procura o jogador no vetor
-	for (int i = 0; i < players.size(); i++)
+	// Procura o jogador na lista
+	for (list<Player>::iterator it = players.begin(); it != players.end(); it++)
 	{
-		if (players[i].getName() == name)
+		// Se o jogador foi encontrado, remove-o da lista
+		if (it->getName() == name)
 		{
-			// Remove o jogador do vetor
-			players.erase(players.begin() + i);
+			players.erase(it);
 			return;
 		}
 	}
 
 	// Se o jogador não foi encontrado, lança uma exceção
 	throw invalid_argument("Player not found");
+}
+
+// Definição do método para mostrar os dados do time
+void Team::showTeam()
+{
+	cout << "Name: " << name << endl;
+	cout << "Stadium: " << stadium << endl;
+	cout << "Coach: " << coach << endl;
+	cout << "City: " << city << endl;
+	cout << "Players: " << endl;
+
+	for (Player& player : players)
+	{
+		cout << "Name: " << player.getName();
+		cout << ", Position: " << player.getPosition();
+		cout << ", Age: " << player.getAge();
+		cout << ", Number: " << player.getNumber() << endl;
+	}
+}
+
+// Definição do destrutor
+Team::~Team()
+{
 }

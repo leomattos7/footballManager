@@ -49,6 +49,24 @@ string Player::getName()
 	return name;
 }
 
+// Definição do método para obter a posição do jogador
+string Player::getPosition()
+{
+	return position;
+}
+
+// Definição do método para obter a idade do jogador
+int Player::getAge()
+{
+	return age;
+}
+
+// Definição do método para obter o número do jogador
+int Player::getNumber()
+{
+	return number;
+}
+
 // Definição do destrutor
 Player::~Player()
 {
