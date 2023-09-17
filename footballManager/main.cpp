@@ -1,9 +1,21 @@
+#include <fstream>
 #include "Team.h"
 
 int main()
 {
     vector<Team> teams;
-    teams.push_back(Team("Flamengo", "Maracanã", "Jorge Jesus", "Rio de Janeiro"));
+
+    // Use a função newTeam() para criar um novo time
+    Team* newTeamPtr = setTeam();
+    if (newTeamPtr == nullptr) {
+        cerr << "Erro ao criar um novo time." << endl;
+        return 1;
+    }
+
+    // Adicione o novo time ao vetor teams
+    teams.push_back(*newTeamPtr);
+
+    // Configure os jogadores do time
     Team& flamengo = teams[0];
     flamengo.addPlayer(Player("Diego Alves", "Goleiro", 34, 1));
     flamengo.addPlayer(Player("Rafinha", "Lateral", 34, 13));
@@ -17,6 +29,13 @@ int main()
     flamengo.addPlayer(Player("Bruno Henrique", "Atacante", 28, 27));
     flamengo.addPlayer(Player("Gabriel Barbosa", "Atacante", 23, 9));
 
+    // Mostre o time
+    flamengo.showTeam();
+
+    // Remova o jogador "Gabriel Barbosa"
+    flamengo.removePlayer("Gabriel Barbosa");
+
+    // Mostre o time novamente
     flamengo.showTeam();
 
     return 0;

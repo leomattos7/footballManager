@@ -20,6 +20,10 @@ public:
 	Player();
 	Player(const string& name, const string& position, int age, int number);
 	void setPlayer(const string& name, const string& position, int age, int number);
+	void setName(const string& name);
+	void setPosition(const string& position);
+	void setAge(int age);
+	void setNumber(int number);
 	string getName();
 	string getPosition();
 	int getAge();

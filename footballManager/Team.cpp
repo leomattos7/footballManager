@@ -83,10 +83,10 @@ void Team::removePlayer(const string& name)
 // Definição do método para mostrar os dados do time
 void Team::showTeam()
 {
-	cout << "Name: " << name << endl;
-	cout << "Stadium: " << stadium << endl;
-	cout << "Coach: " << coach << endl;
-	cout << "City: " << city << endl;
+	cout << "Name: " << getName() << endl;
+	cout << "Stadium: " << getStadium() << endl;
+	cout << "Coach: " << getCoach() << endl;
+	cout << "City: " << getCity() << endl;
 	cout << "Players: " << endl;
 
 	for (Player& player : players)
@@ -96,9 +96,112 @@ void Team::showTeam()
 		cout << ", Age: " << player.getAge();
 		cout << ", Number: " << player.getNumber() << endl;
 	}
+	cout << endl;
+}
+
+// Definição do método para configurar o nome do time
+void Team::setName(const string& name)
+{
+	// Verificações usando exceções
+	if (name.empty())
+	{
+		throw invalid_argument("Name cannot be empty");
+	}
+
+	// Atribui o valor ao membro
+	this->name = name;
+}
+
+// Definição do método para configurar o estádio do time
+void Team::setStadium(const string& stadium)
+{
+	// Verificações usando exceções
+	if (stadium.empty())
+	{
+		throw invalid_argument("Stadium cannot be empty");
+	}
+
+	// Atribui o valor ao membro
+	this->stadium = stadium;
+}
+
+// Definição do método para configurar o técnico do time
+void Team::setCoach(const string& coach)
+{
+	// Verificações usando exceções
+	if (coach.empty())
+	{
+		throw invalid_argument("Coach cannot be empty");
+	}
+
+	// Atribui o valor ao membro
+	this->coach = coach;
+}
+
+// Definição do método para configurar a cidade do time
+void Team::setCity(const string& city)
+{
+	// Verificações usando exceções
+	if (city.empty())
+	{
+		throw invalid_argument("City cannot be empty");
+	}
+
+	// Atribui o valor ao membro
+	this->city = city;
+}
+
+// Definição do método para obter o nome do time
+string Team::getName()
+{
+	return name;
+}
+
+// Definição do método para obter o estádio do time
+string Team::getStadium()
+{
+	return stadium;
+}
+
+// Definição do método para obter o técnico do time
+string Team::getCoach()
+{
+	return coach;
+}
+
+// Definição do método para obter a cidade do time
+string Team::getCity()
+{
+	return city;
+}
+
+// Definição do método para obter a lista de jogadores do time
+list<Player> Team::getPlayers()
+{
+	return players;
 }
 
 // Definição do destrutor
 Team::~Team()
 {
+}
+
+Team* setTeam()
+{
+	string name, stadium, coach, city;
+
+	cout << "Digite o nome do time: ";
+	getline(cin, name);
+
+	cout << "Digite o estádio do time: ";
+	getline(cin, stadium);
+
+	cout << "Digite o técnico do time: ";
+	getline(cin, coach);
+
+	cout << "Digite a cidade do time: ";
+	getline(cin, city);
+
+	Team* team = new Team(name, stadium, coach, city);
+	return team;
 }

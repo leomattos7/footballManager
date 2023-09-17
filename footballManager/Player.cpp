@@ -43,6 +43,58 @@ void Player::setPlayer(const string& name, const string& position, int age, int 
     this->number = number;
 }
 
+// Definição do método para configurar o nome do jogador
+void Player::setName(const string& name)
+{
+	// Verificações usando exceções
+    if (name.empty())
+    {
+		throw invalid_argument("Name cannot be empty");
+	}
+
+	// Atribui o valor ao membro
+	this->name = name;
+}
+
+// Definição do método para configurar a posição do jogador
+void Player::setPosition(const string& position)
+{
+	// Verificações usando exceções
+    if (position.empty())
+    {
+		throw invalid_argument("Position cannot be empty");
+	}
+
+	// Atribui o valor ao membro
+	this->position = position;
+}
+
+// Definição do método para configurar a idade do jogador
+void Player::setAge(int age)
+{
+	// Verificações usando exceções
+    if (age < 0)
+    {
+		throw invalid_argument("Age cannot be negative");
+	}
+
+	// Atribui o valor ao membro
+	this->age = age;
+}
+
+// Definição do método para configurar o número do jogador
+void Player::setNumber(int number)
+{
+	// Verificações usando exceções
+    if (number < 0)
+    {
+		throw invalid_argument("Number cannot be negative");
+	}
+
+	// Atribui o valor ao membro
+	this->number = number;
+}
+
 // Definição do método para obter o nome do jogador
 string Player::getName()
 {
