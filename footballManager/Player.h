@@ -19,6 +19,7 @@ class Player
 		Player();
 		Player(const string& name, const string& position, int age, int number);
 		void setPlayer(const string& name, const string& position, int age, int number);
+		string getName();
 		~Player();
 };
 

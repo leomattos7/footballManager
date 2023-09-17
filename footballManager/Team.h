@@ -14,6 +14,7 @@ class Team
 		Team(const string& name, const string& stadium, const string& coach, const string& city);
 		void setTeam(const string& name, const string& stadium, const string& coach, const string& city);
 		void addPlayer(const Player& player);
+		
 		void removePlayer(const string& name);
 		~Team();
 };

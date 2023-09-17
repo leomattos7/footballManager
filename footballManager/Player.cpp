@@ -43,6 +43,12 @@ void Player::setPlayer(const string& name, const string& position, int age, int 
     this->number = number;
 }
 
+// Definição do método para obter o nome do jogador
+string Player::getName()
+{
+	return name;
+}
+
 // Definição do destrutor
 Player::~Player()
 {
