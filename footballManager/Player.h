@@ -17,18 +17,18 @@ private:
 	int number;
 
 public:
-	Player();
+	Player() : name(""), position(""), age(0), number(0) { }
 	Player(const string& name, const string& position, int age, int number);
-	void setPlayer(const string& name, const string& position, int age, int number);
-	void setName(const string& name);
-	void setPosition(const string& position);
-	void setAge(int age);
-	void setNumber(int number);
-	string getName();
-	string getPosition();
-	int getAge();
-	int getNumber();
-	~Player();
+	Player& setPlayer(const string& name, const string& position, int age, int number);
+	Player& setName(const string& name);
+	Player& setPosition(const string& position);
+	Player& setAge(int age);
+	Player& setNumber(int number);
+	string getName() {return name;}
+	string getPosition() {return position;}
+	int getAge() {return age;}
+	int getNumber() {return number;}
+	~Player() { }
 };
 
 #endif

@@ -12,20 +12,20 @@ private:
 public:
 	Team();
 	Team(const string& name, const string& stadium, const string& coach, const string& city);
-	void setName(const string& name);
-	void setStadium(const string& stadium);
-	void setCoach(const string& coach);
-	void setCity(const string& city);
-	string getName();
-	string getStadium();
-	string getCoach();
-	string getCity();
-	list<Player> getPlayers();
-	void setTeam(const string& name, const string& stadium, const string& coach, const string& city);
+	Team& setTeam(const string& name, const string& stadium, const string& coach, const string& city);
+	Team& setName(const string& name);
+	Team& setStadium(const string& stadium);
+	Team& setCoach(const string& coach);
+	Team& setCity(const string& city);
+	string getName() { return name; }
+	string getStadium() { return stadium; }
+	string getCoach() { return coach; }
+	string getCity() { return city; }
+	list<Player> getPlayers() { return players; }
 	void addPlayer(const Player& player);
 	void removePlayer(const string& name);
 	void showTeam();
 	~Team();
 };
 
-Team* setTeam();
+Team* setDataTeam();

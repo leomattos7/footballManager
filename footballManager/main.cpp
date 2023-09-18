@@ -6,7 +6,7 @@ int main()
     vector<Team> teams;
 
     // Use a função newTeam() para criar um novo time
-    Team* newTeamPtr = setTeam();
+    Team* newTeamPtr = setDataTeam();
     if (newTeamPtr == nullptr) {
         cerr << "Erro ao criar um novo time." << endl;
         return 1;
@@ -30,13 +30,23 @@ int main()
     flamengo.addPlayer(Player("Gabriel Barbosa", "Atacante", 23, 9));
 
     // Mostre o time
-    flamengo.showTeam();
+    for (auto& team : teams) {
+		team.showTeam();
+	}
 
     // Remova o jogador "Gabriel Barbosa"
     flamengo.removePlayer("Gabriel Barbosa");
 
     // Mostre o time novamente
-    flamengo.showTeam();
+    for (auto& team : teams) {
+        team.showTeam();
+    }
+
+    flamengo.~Team();
+
+    for (auto& team : teams) {
+        team.showTeam();
+    }
 
     return 0;
 }

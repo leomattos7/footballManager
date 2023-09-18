@@ -1,11 +1,5 @@
 #include "Player.h"
 
-// Definição do construtor padrão
-Player::Player()
-    : name(""), position(""), age(0), number(0)
-{
-}
-
 // Definição do construtor parametrizado
 Player::Player(const string& name, const string& position, int age, int number)
 {
@@ -13,7 +7,7 @@ Player::Player(const string& name, const string& position, int age, int number)
 }
 
 // Definição do método para configurar os atributos da classe
-void Player::setPlayer(const string& name, const string& position, int age, int number)
+Player& Player::setPlayer(const string& name, const string& position, int age, int number)
 {
     // Verificações usando exceções
     if (age < 0)
@@ -44,7 +38,7 @@ void Player::setPlayer(const string& name, const string& position, int age, int 
 }
 
 // Definição do método para configurar o nome do jogador
-void Player::setName(const string& name)
+Player& Player::setName(const string& name)
 {
 	// Verificações usando exceções
     if (name.empty())
@@ -54,10 +48,11 @@ void Player::setName(const string& name)
 
 	// Atribui o valor ao membro
 	this->name = name;
+    return *this;
 }
 
 // Definição do método para configurar a posição do jogador
-void Player::setPosition(const string& position)
+Player& Player::setPosition(const string& position)
 {
 	// Verificações usando exceções
     if (position.empty())
@@ -67,10 +62,11 @@ void Player::setPosition(const string& position)
 
 	// Atribui o valor ao membro
 	this->position = position;
+    return *this;
 }
 
 // Definição do método para configurar a idade do jogador
-void Player::setAge(int age)
+Player& Player::setAge(int age)
 {
 	// Verificações usando exceções
     if (age < 0)
@@ -80,10 +76,11 @@ void Player::setAge(int age)
 
 	// Atribui o valor ao membro
 	this->age = age;
+    return *this;
 }
 
 // Definição do método para configurar o número do jogador
-void Player::setNumber(int number)
+Player& Player::setNumber(int number)
 {
 	// Verificações usando exceções
     if (number < 0)
@@ -93,34 +90,6 @@ void Player::setNumber(int number)
 
 	// Atribui o valor ao membro
 	this->number = number;
+    return *this;
 }
 
-// Definição do método para obter o nome do jogador
-string Player::getName()
-{
-	return name;
-}
-
-// Definição do método para obter a posição do jogador
-string Player::getPosition()
-{
-	return position;
-}
-
-// Definição do método para obter a idade do jogador
-int Player::getAge()
-{
-	return age;
-}
-
-// Definição do método para obter o número do jogador
-int Player::getNumber()
-{
-	return number;
-}
-
-// Definição do destrutor
-Player::~Player()
-{
-    // Não é necessário neste caso
-}

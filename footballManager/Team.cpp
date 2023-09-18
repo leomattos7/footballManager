@@ -13,7 +13,7 @@ Team::Team(const string& name, const string& stadium, const string& coach, const
 }
 
 // Definição do método para configurar os atributos da classe
-void Team::setTeam(const string& name, const string& stadium, const string& coach, const string& city)
+Team& Team::setTeam(const string& name, const string& stadium, const string& coach, const string& city)
 {
 	// Verificações usando exceções
 	if (name.empty())
@@ -41,6 +41,8 @@ void Team::setTeam(const string& name, const string& stadium, const string& coac
 	this->stadium = stadium;
 	this->coach = coach;
 	this->city = city;
+
+	return *this;
 }
 
 // Definição do método para adicionar um jogador ao time
@@ -100,7 +102,7 @@ void Team::showTeam()
 }
 
 // Definição do método para configurar o nome do time
-void Team::setName(const string& name)
+Team& Team::setName(const string& name)
 {
 	// Verificações usando exceções
 	if (name.empty())
@@ -110,10 +112,11 @@ void Team::setName(const string& name)
 
 	// Atribui o valor ao membro
 	this->name = name;
+	return *this;
 }
 
 // Definição do método para configurar o estádio do time
-void Team::setStadium(const string& stadium)
+Team& Team::setStadium(const string& stadium)
 {
 	// Verificações usando exceções
 	if (stadium.empty())
@@ -123,10 +126,11 @@ void Team::setStadium(const string& stadium)
 
 	// Atribui o valor ao membro
 	this->stadium = stadium;
+	return *this;
 }
 
 // Definição do método para configurar o técnico do time
-void Team::setCoach(const string& coach)
+Team& Team::setCoach(const string& coach)
 {
 	// Verificações usando exceções
 	if (coach.empty())
@@ -136,10 +140,11 @@ void Team::setCoach(const string& coach)
 
 	// Atribui o valor ao membro
 	this->coach = coach;
+	return *this;
 }
 
 // Definição do método para configurar a cidade do time
-void Team::setCity(const string& city)
+Team& Team::setCity(const string& city)
 {
 	// Verificações usando exceções
 	if (city.empty())
@@ -149,36 +154,7 @@ void Team::setCity(const string& city)
 
 	// Atribui o valor ao membro
 	this->city = city;
-}
-
-// Definição do método para obter o nome do time
-string Team::getName()
-{
-	return name;
-}
-
-// Definição do método para obter o estádio do time
-string Team::getStadium()
-{
-	return stadium;
-}
-
-// Definição do método para obter o técnico do time
-string Team::getCoach()
-{
-	return coach;
-}
-
-// Definição do método para obter a cidade do time
-string Team::getCity()
-{
-	return city;
-}
-
-// Definição do método para obter a lista de jogadores do time
-list<Player> Team::getPlayers()
-{
-	return players;
+	return *this;
 }
 
 // Definição do destrutor
@@ -186,7 +162,7 @@ Team::~Team()
 {
 }
 
-Team* setTeam()
+Team* setDataTeam()
 {
 	string name, stadium, coach, city;
 
