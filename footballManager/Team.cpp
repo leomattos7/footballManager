@@ -181,3 +181,14 @@ Team* setDataTeam()
 	Team* team = new Team(name, stadium, coach, city);
 	return team;
 }
+
+Team* addNewTeam()
+{
+	Team* newTeamPtr = setDataTeam();
+	if (newTeamPtr == nullptr)
+	{
+		cerr << "Erro ao criar um novo time." << endl;
+		return NULL;
+	}
+	return newTeamPtr;
+}

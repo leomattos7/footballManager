@@ -31,4 +31,6 @@ public:
 	~Player() { }
 };
 
+Player* setDataPlayer();
+
 #endif

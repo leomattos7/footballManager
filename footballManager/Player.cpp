@@ -93,3 +93,28 @@ Player& Player::setNumber(int number)
     return *this;
 }
 
+// Definição do método para configurar o nome do jogador
+Player* setDataPlayer()
+{
+	string name;
+	string position;
+	int age;
+	int number;
+
+	cout << "Name: ";
+	getline(cin, name);
+
+	cout << "Position: ";
+	getline(cin, position);
+
+	cout << "Age: ";
+	cin >> age;
+
+	cout << "Number: ";
+	cin >> number;
+
+	cin.ignore();
+
+	Player* player = new Player(name, position, age, number);
+	return player;
+}

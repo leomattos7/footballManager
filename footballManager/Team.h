@@ -29,3 +29,5 @@ public:
 };
 
 Team* setDataTeam();
+
+Team* addNewTeam();
