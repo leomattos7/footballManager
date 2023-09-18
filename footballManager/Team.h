@@ -31,3 +31,5 @@ public:
 Team* setDataTeam();
 
 Team* addNewTeam();
+
+Team* findTeamByName(list<Team>& teamsList, const string& searchName);

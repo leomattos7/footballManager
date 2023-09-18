@@ -26,6 +26,44 @@ int main()
 		}
 	}
 
+	while (1)
+	{
+		cout << "1 - Adicionar um jogador a um time" << endl;
+		cout << "2 - Sair" << endl;
+		int option;
+		cin >> option;
+		cin.ignore();
+		if (option == 1)
+		{
+			cout << "Digite o nome do time: ";
+			string searchName;
+			getline(cin, searchName);
+			Team* team = findTeamByName(teams, searchName);
+			if (team == nullptr)
+			{
+				cerr << "Time não encontrado." << endl;
+				break;
+			}
+			else
+			{
+				do {
+					team->addPlayer(*setDataPlayer());
+					cout << "Deseja adicionar outro jogador? (s/n) ";
+					char option;
+					cin >> option;
+					cin.ignore();
+					if (option == 'n')
+					{
+						break;
+					}
+				} while (1);
+			}
+		}
+		else if (option == 2)
+		{
+			break;
+		}
+	}
 	/*// Configure os jogadores do time
 	Player* currentPlayer;
 	currentPlayer = setDataPlayer();

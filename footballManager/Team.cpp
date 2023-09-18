@@ -192,3 +192,14 @@ Team* addNewTeam()
 	}
 	return newTeamPtr;
 }
+
+Team* findTeamByName(list<Team>& teamsList, const string& searchName) {
+	for (auto it = teamsList.begin(); it != teamsList.end(); ++it) {
+		if (it->getName() == searchName) {
+			// Encontrou um time com o nome correspondente, retorna um ponteiro para ele
+			return const_cast<Team*>(&(*it)); // Remove constness para retornar um ponteiro não constante
+		}
+	}
+	// Se não encontrou nenhum time com o nome correspondente, retorna nullptr
+	return nullptr;
+}
