@@ -24,6 +24,7 @@ public:
 	list<Player> getPlayers() { return players; }
 	void addPlayer(const Player& player);
 	void removePlayer(const string& name);
+	void sortPlayers();
 	void showTeam();
 	~Team();
 };

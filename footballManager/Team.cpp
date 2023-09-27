@@ -203,3 +203,10 @@ Team* findTeamByName(list<Team>& teamsList, const string& searchName) {
 	// Se não encontrou nenhum time com o nome correspondente, retorna nullptr
 	return nullptr;
 }
+
+void Team::sortPlayers()
+{
+	this->players.sort([](Player& player1, Player& player2) {
+		return player1.getNumber() < player2.getNumber();
+	});
+}
