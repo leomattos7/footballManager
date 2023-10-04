@@ -193,20 +193,168 @@ Team* addNewTeam()
 	return newTeamPtr;
 }
 
-Team* findTeamByName(list<Team>& teamsList, const string& searchName) {
-	for (auto it = teamsList.begin(); it != teamsList.end(); ++it) {
-		if (it->getName() == searchName) {
-			// Encontrou um time com o nome correspondente, retorna um ponteiro para ele
-			return const_cast<Team*>(&(*it)); // Remove constness para retornar um ponteiro não constante
+Team* findTeamByName(list<Team>& teamsList, const string& searchName) 
+{
+	for (auto it = teamsList.begin(); it != teamsList.end(); ++it) 
+	{
+		if (it->getName() == searchName) 
+		{
+			return const_cast<Team*>(&(*it));
 		}
 	}
-	// Se não encontrou nenhum time com o nome correspondente, retorna nullptr
 	return nullptr;
 }
 
 void Team::sortPlayers()
 {
-	this->players.sort([](Player& player1, Player& player2) {
+	this->players.sort([](Player& player1, Player& player2) 
+	{
 		return player1.getNumber() < player2.getNumber();
 	});
+}
+
+void Team::findPlayerByNumber(const int number)
+{
+	for (auto it = players.begin(); it != players.end(); ++it)
+	{
+		if (it->getNumber() == number)
+		{
+			lineup.push_back(*it);
+		}
+	}
+	
+}
+
+static int choiceFormation()
+{
+	int choice;
+	cout << "Escolha a formacao: " << endl;
+	cout << "1 - 4-4-2" << endl;
+	cout << "2 - 4-3-3" << endl;
+	cout << "3 - 4-5-1" << endl;
+	cout << "4 - 3-5-2" << endl;
+	cout << "5 - 3-4-3" << endl;
+	do
+	{
+		cin >> choice;
+	} while (choice < 1 || choice > 5);
+	system("cls");
+	return choice;
+}
+
+void Team::setGoalkeeper()
+{
+	int playerNumber;
+	cout << "Escolha o goleiro: " << endl;
+	for (auto it = players.begin(); it != players.end(); ++it)
+	{
+		if (it->getPosition() == "Goleiro" || "goleiro")
+		{
+			cout << it->getNumber() << " - " << it->getName() << endl;
+		}
+	}
+	cin >> playerNumber;
+	findPlayerByNumber(playerNumber);
+}
+
+void Team::setDefenders()
+{
+	int maxDefenders;
+	if(formation == 1 || formation == 2 || formation == 3)
+	{
+		maxDefenders = 4;
+	}
+	else
+	{
+		maxDefenders = 3;
+	}
+	int playerNumber;
+	cout << "Escolha os defensores: " << endl;
+	for (auto it = players.begin(); it != players.end(); ++it)
+	{
+		if (it->getPosition() == "zagueiro" || "lateral")
+		{
+			cout << it->getNumber() << " - " << it->getName() << endl;
+		}
+	}
+	int i = 0;
+	while (i < maxDefenders)
+	{
+		cin >> playerNumber;
+		findPlayerByNumber(playerNumber);
+		i++;
+	}
+}
+
+void Team::setMidfielders()
+{
+	int maxMidfielders;
+	if (formation == 1 || formation == 5)
+	{
+		maxMidfielders = 4;
+	}
+	else if (formation == 3 || formation == 4)
+	{
+		maxMidfielders = 5;
+	}
+	else
+	{
+		maxMidfielders = 3;
+	}
+	int playerNumber;
+	cout << "Escolha os meio-campistas: " << endl;
+	for (auto it = players.begin(); it != players.end(); ++it)
+	{
+		if (it->getPosition() == "meio-campista")
+		{
+			cout << it->getNumber() << " - " << it->getName() << endl;
+		}
+	}
+	int i = 0;
+	while (i < maxMidfielders)
+	{
+		cin >> playerNumber;
+		findPlayerByNumber(playerNumber);
+		i++;
+	}
+}
+
+void Team::setStrikers()
+{
+	int maxStrikers;
+	if (formation == 1 || formation == 4)
+	{
+		maxStrikers = 2;
+	}
+	else if (formation == 2 || formation == 5)
+	{
+		maxStrikers = 3;
+	}
+	else
+	{
+		maxStrikers = 1;
+	}
+	int playerNumber;
+	cout << "Escolha os atacantes: " << endl;
+	for (auto it = players.begin(); it != players.end(); ++it)
+	{
+		if (it->getPosition() == "atacante")
+		{
+			cout << it->getNumber() << " - " << it->getName() << endl;
+		}
+	}
+	int i = 0;
+	while (i < maxStrikers)
+	{
+		cin >> playerNumber;
+		findPlayerByNumber(playerNumber);
+		i++;
+	}
+}
+
+void Team::setLineup()
+{
+	formation = choiceFormation();
+	setGoalkeeper();
+	setDefenders();
 }

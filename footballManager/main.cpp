@@ -58,6 +58,7 @@ int main()
 						break;
 					}
 				} while (1);
+				team->setLineup();
 			}
 		}
 		else if (option == 2)

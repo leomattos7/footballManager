@@ -7,7 +7,9 @@ private:
 	string stadium;
 	string coach;
 	string city;
+	int formation;
 	list<Player> players;
+	list<Player> lineup;
 
 public:
 	Team();
@@ -26,6 +28,12 @@ public:
 	void removePlayer(const string& name);
 	void sortPlayers();
 	void showTeam();
+	void findPlayerByNumber(const int number);
+	void setGoalkeeper();
+	void setDefenders();
+	void setMidfielders();
+	void setStrikers();
+	void setLineup();
 	~Team();
 };
 
