@@ -248,13 +248,23 @@ void Team::setGoalkeeper()
 	cout << "Escolha o goleiro: " << endl;
 	for (auto it = players.begin(); it != players.end(); ++it)
 	{
-		if (it->getPosition() == "Goleiro" || "goleiro")
+		if (it->getPosition() == "goalkeeper")
 		{
 			cout << it->getNumber() << " - " << it->getName() << endl;
 		}
 	}
-	cin >> playerNumber;
-	findPlayerByNumber(playerNumber);
+	int i = 0;
+	list<Player>aux;
+	aux = this->lineup;
+	while (i < i)
+	{
+		cin >> playerNumber;
+		findPlayerByNumber(playerNumber);
+		if (aux.size() != this->lineup.size())
+			i++;
+		aux = this->lineup;
+	}
+	
 }
 
 void Team::setDefenders()
@@ -272,17 +282,21 @@ void Team::setDefenders()
 	cout << "Escolha os defensores: " << endl;
 	for (auto it = players.begin(); it != players.end(); ++it)
 	{
-		if (it->getPosition() == "zagueiro" || "lateral")
+		if (it->getPosition() == "defender")
 		{
 			cout << it->getNumber() << " - " << it->getName() << endl;
 		}
 	}
 	int i = 0;
+	list<Player>aux;
+	aux = this->lineup;
 	while (i < maxDefenders)
 	{
 		cin >> playerNumber;
 		findPlayerByNumber(playerNumber);
-		i++;
+		if(aux.size() != this->lineup.size())
+			i++;
+		aux = this->lineup;
 	}
 }
 
@@ -305,17 +319,21 @@ void Team::setMidfielders()
 	cout << "Escolha os meio-campistas: " << endl;
 	for (auto it = players.begin(); it != players.end(); ++it)
 	{
-		if (it->getPosition() == "meio-campista")
+		if (it->getPosition() == "middle")
 		{
 			cout << it->getNumber() << " - " << it->getName() << endl;
 		}
 	}
 	int i = 0;
+	list<Player>aux;
+	aux = this->lineup;
 	while (i < maxMidfielders)
 	{
 		cin >> playerNumber;
 		findPlayerByNumber(playerNumber);
-		i++;
+		if (aux.size() != this->lineup.size())
+			i++;
+		aux = this->lineup;
 	}
 }
 
@@ -338,17 +356,21 @@ void Team::setStrikers()
 	cout << "Escolha os atacantes: " << endl;
 	for (auto it = players.begin(); it != players.end(); ++it)
 	{
-		if (it->getPosition() == "atacante")
+		if (it->getPosition() == "striker")
 		{
 			cout << it->getNumber() << " - " << it->getName() << endl;
 		}
 	}
 	int i = 0;
+	list<Player>aux;
+	aux = this->lineup;
 	while (i < maxStrikers)
 	{
 		cin >> playerNumber;
 		findPlayerByNumber(playerNumber);
-		i++;
+		if (aux.size() != this->lineup.size())
+			i++;
+		aux = this->lineup;
 	}
 }
 
@@ -357,4 +379,6 @@ void Team::setLineup()
 	formation = choiceFormation();
 	setGoalkeeper();
 	setDefenders();
+	setMidfielders();
+	setStrikers();
 }

@@ -1,13 +1,13 @@
 #include "Player.h"
 
 // Definição do construtor parametrizado
-Player::Player(const string& name, const string& position, int age, int number)
+Player::Player(const string& name, int position, int age, int number)
 {
     setPlayer(name, position, age, number);
 }
 
 // Definição do método para configurar os atributos da classe
-Player& Player::setPlayer(const string& name, const string& position, int age, int number)
+Player& Player::setPlayer(const string& name, int position, int age, int number)
 {
     // Verificações usando exceções
     if (age < 0)
@@ -25,16 +25,30 @@ Player& Player::setPlayer(const string& name, const string& position, int age, i
         throw invalid_argument("Name cannot be empty");
     }
 
-    if (position.empty())
+    if (position < 0 || position > 4)
     {
         throw invalid_argument("Position cannot be empty");
     }
 
     // Atribui os valores aos membros
     this->name = name;
-    this->position = position;
     this->age = age;
     this->number = number;
+	switch (position)
+	{
+	case 1:
+		this->position = "goalkeeper";
+		break;
+	case 2:
+		this->position = "defender";
+		break;
+	case 3:
+		this->position = "middle";
+		break;
+	case 4:
+		this->position = "striker";
+		break;
+	}
 }
 
 // Definição do método para configurar o nome do jogador
@@ -97,24 +111,19 @@ Player& Player::setNumber(int number)
 Player* setDataPlayer()
 {
 	string name;
-	string position;
+	int position;
 	int age;
 	int number;
-
 	cout << "Name: ";
 	getline(cin, name);
-
-	cout << "Position: ";
-	getline(cin, position);
-
+	cout << "Position: " << endl;
+	cout << "1 - Goleiro" << endl << "2 - Defensor" << endl << "3 - Meio-campista" << endl << "4 - Atacante" << endl;
+	cin >> position;
 	cout << "Age: ";
 	cin >> age;
-
 	cout << "Number: ";
 	cin >> number;
-
 	cin.ignore();
-
 	Player* player = new Player(name, position, age, number);
 	return player;
 }

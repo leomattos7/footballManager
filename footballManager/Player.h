@@ -17,9 +17,9 @@ private:
 	int number;
 
 public:
-	Player() : name(""), position(""), age(0), number(0) { }
-	Player(const string& name, const string& position, int age, int number);
-	Player& setPlayer(const string& name, const string& position, int age, int number);
+	Player() : name(""), position(0), age(0), number(0) { }
+	Player(const string& name, int position, int age, int number);
+	Player& setPlayer(const string& name, int position, int age, int number);
 	Player& setName(const string& name);
 	Player& setPosition(const string& position);
 	Player& setAge(int age);
