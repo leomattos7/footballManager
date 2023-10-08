@@ -101,6 +101,19 @@ void Team::showTeam()
 	cout << endl;
 }
 
+void Team::showLineup()
+{
+	cout << "Name: " << getName() << endl;
+	cout << "Escalacao: " << endl;
+	for (Player& player : lineup)
+	{
+		cout << "Name: " << player.getName();
+		cout << ", Position: " << player.getPosition();
+		cout << ", Age: " << player.getAge();
+		cout << ", Number: " << player.getNumber() << endl;
+	}
+}
+
 // Definição do método para configurar o nome do time
 Team& Team::setName(const string& name)
 {
@@ -169,10 +182,10 @@ Team* setDataTeam()
 	cout << "Digite o nome do time: ";
 	getline(cin, name);
 
-	cout << "Digite o estádio do time: ";
+	cout << "Digite o estadio do time: ";
 	getline(cin, stadium);
 
-	cout << "Digite o técnico do time: ";
+	cout << "Digite o tecnico do time: ";
 	getline(cin, coach);
 
 	cout << "Digite a cidade do time: ";
@@ -211,6 +224,14 @@ void Team::sortPlayers()
 	{
 		return player1.getNumber() < player2.getNumber();
 	});
+}
+
+void Team::sortLineup()
+{
+	this->lineup.sort([](Player& player1, Player& player2)
+		{
+			return player1.getNumber() < player2.getNumber();
+		});
 }
 
 void Team::findPlayerByNumber(const int number)

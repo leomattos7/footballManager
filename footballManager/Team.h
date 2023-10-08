@@ -34,6 +34,8 @@ public:
 	void setMidfielders();
 	void setStrikers();
 	void setLineup();
+	void showLineup();
+	void sortLineup();
 	~Team();
 };
 
