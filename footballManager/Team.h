@@ -11,6 +11,10 @@ private:
 	list<Player> players;
 	list<Player> lineup;
 
+	int points;
+	int mGoals;
+	int cGoals;
+
 public:
 	Team();
 	Team(const string& name, const string& stadium, const string& coach, const string& city);

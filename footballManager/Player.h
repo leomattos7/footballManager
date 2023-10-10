@@ -16,6 +16,11 @@ private:
 	int age;
 	int number;
 
+	int goals;
+	int yCards;
+	int rCards;
+	int fouls;
+
 public:
 	Player() : name(""), position(0), age(0), number(0) { }
 	Player(const string& name, int position, int age, int number);

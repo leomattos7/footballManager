@@ -42,6 +42,10 @@ Team& Team::setTeam(const string& name, const string& stadium, const string& coa
 	this->coach = coach;
 	this->city = city;
 
+	this->points = 0;
+	this->mGoals = 0;
+	this->cGoals = 0;
+
 	return *this;
 }
 

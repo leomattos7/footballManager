@@ -49,6 +49,11 @@ Player& Player::setPlayer(const string& name, int position, int age, int number)
 		this->position = "striker";
 		break;
 	}
+
+	this->goals = 0;
+	this->yCards = 0;
+	this->rCards = 0;
+	this->fouls = 0;
 }
 
 // Definição do método para configurar o nome do jogador

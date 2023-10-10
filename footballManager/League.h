@@ -3,7 +3,7 @@
 class League
 {
 	private:
-		//
+		list<Team> teams;
 
 	public:
 		//
